@@ -1,0 +1,14 @@
+/* Importing Font */
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap');
+
+*{
+    font-family: 'Spartan', sans-serif;
+}
+
+body {
+    background-image: url(./assets/img/owm4oa3hXUG58mka7hPvfP.jpeg);
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    background-color: rgb(99, 94, 240);
+    padding: 8%;
+}

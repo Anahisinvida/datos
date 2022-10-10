@@ -6,10 +6,13 @@ console.log("probando");
 
 const  getFriends  = () => {
     const data = JSON.parse(localStorage.getItem("data-friends"));
-    data ? console.log("si hay") : getData(); 
+    data && userdata.time > Date.now() ? storageData() : getData(); 
 
 }
 
+/**
+ * Función fetch 
+ */
 function getData() {
     fetch("https://reqres.in/api/users?delay=3")
     .then(showInfo => showInfo.json())
@@ -17,19 +20,20 @@ function getData() {
         console.log(showInfo);
         let result = showInfo.data
         console.log(result);
-
         for (let data in result){
-            console.log(result[data].id);
+            console.log(result[data]);
             addRow(1, result[data]);
         }
-
+        storageData(showInfo.data);
     }); 
 }
-    //manipulación del DOM 
+    /**
+ * Esta función me agrega una row por cada usuario. 
+ * Estioy segura que puede ser in loop pero no estuve segura de cómo
+ */
 
     function addRow(colCount, data){
     let table = document.getElementById('tableData');
-    //let rowCount = table.row.length;
     let row = table.insertRow (data.id);
     for(let i=0; i<colCount; i++){
         
@@ -52,6 +56,17 @@ function getData() {
     }
 }
 
+    //Save localStorage
+
+
+function storageData([...data]){ 
+    let user = {
+        content: [...data],
+        time: Date.now() + 60000
+    }
+    localStorage.setItem('user', JSON.stringify(user.data));
+}
+  
 
 
 /** ---- Esta es data */
