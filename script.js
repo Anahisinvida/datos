@@ -6,7 +6,7 @@ console.log("damn");
 
 const  getFriends  = () => {
     const data = JSON.parse(localStorage.getItem("table-data"));
-    data && userdata.time > Date.now() ? 
+    data && user.time > Date.now() ? 
     displayData(data) : 
     getData(); 
 
@@ -75,12 +75,12 @@ function storageData([...data]){
         content: [...data],
         time: Date.now() + 60000 //Set local time and add 1 min.
     }
-    localStorage.setItem('userDato', JSON.stringify(user.data));
+    localStorage.setItem('table-data', JSON.stringify(user));
 }
   
 //Function Display Friends
 function displayData(data){
-    const dataF = JSON.parse(localStorage.getItem("tableData"));
+    const dataF = JSON.parse(localStorage.getItem("table-data"));
     dataF.innerHTML=""; //limpia el DOM
     data.forEach(user => dataF.innerHTML += displayData(user));
 }
