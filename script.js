@@ -12,6 +12,7 @@ const  getFriends  = () => {
 
 }
 
+
 /**
  * Función fetch 
  */
@@ -56,8 +57,14 @@ function getData() {
         let newCell4 = row.insertCell(i);
         let newText4 = document.createElement("img");
         newText4.src = data.avatar;
+        newText4.setAttribute("src", data.avatar);
+        newText4.classList.add("rounded-circle", "w-35");
         newCell4.appendChild(newText4); 
+    
+
     }
+
+ 
 }
 
 //Save localStorage

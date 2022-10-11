@@ -9,7 +9,7 @@
 body {
  
     margin: 0 auto;
-    background-color: rgb(99, 94, 240);
+    background-color: rgb(207, 227, 248);
     padding: 8%;
 }
 
@@ -24,3 +24,11 @@ body {
     text-align: center;
   }
 
+img {
+    border-radius: 50;
+}
+
+
+.column {
+    width: 100%;
+  }
