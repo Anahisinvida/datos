@@ -5,8 +5,10 @@ console.log("probando");
 //La acción de mi boton 
 
 const  getFriends  = () => {
-    const data = JSON.parse(localStorage.getItem("data-friends"));
-    data && userdata.time > Date.now() ? storageData() : getData(); 
+    const data = JSON.parse(localStorage.getItem("table-data"));
+    data && userdata.time > Date.now() ? 
+    displayData(data) : 
+    getData(); 
 
 }
 
@@ -25,7 +27,9 @@ function getData() {
             addRow(1, result[data]);
         }
         storageData(showInfo.data);
-    }); 
+    });
+    
+  
 }
     /**
  * Esta función me agrega una row por cada usuario. 
@@ -56,18 +60,23 @@ function getData() {
     }
 }
 
-    //Save localStorage
+//Save localStorage
 
 
 function storageData([...data]){ 
     let user = {
         content: [...data],
-        time: Date.now() + 60000
+        time: Date.now() + 60000 //Set local time and add 1 min.
     }
-    localStorage.setItem('user', JSON.stringify(user.data));
+    localStorage.setItem('userDato', JSON.stringify(user.data));
 }
   
-
+//Function Display Friends
+function displayData(data){
+    const dataF = JSON.parse(localStorage.getItem("tableData"));
+    dataF.innerHTML=""; //limpia el DOM
+    data.forEach(user => dataF.innerHTML += displayData(user));
+}
 
 /** ---- Esta es data */
 const btnfriends = document.getElementById ("btn")
